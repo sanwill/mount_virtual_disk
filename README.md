@@ -1,8 +1,8 @@
 # Mount Virtual Disk
 Users have few option to move files from VM's disk to local PC, they can do scp or use "Shared folder" option (in case of VirtualBox), however there is a 3rd option which to mount the virtual disk directly to local PC.
-This definately useful users want to copy the files without boot up the VM (e.g. in case of the boot disk failure).
+This definately useful if users want to copy the files without boot up the VM (e.g. in case of the boot disk failure).
 
-We are using qemu-nbd to mount the virtual disk. The qemu-ndb supports a variety of virtual disk formats such as:
+We will use qemu-nbd to mount the virtual disk. qemu-ndb supports a variety of virtual disk formats such as:
 QCOW2: QEMU's own format, which supports features like snapshots and compression.
 RAW: A simple uncompressed format.
 VMDK: VMware's format.
@@ -25,12 +25,28 @@ Verify if the vdisk is mounted
 
 `sudo fdisk -l /dev/nbd0`
 
+For example
+```
+$ sudo fdisk -l /dev/nbd0
+
+Disk /dev/nbd0: 400 GiB, 429496729600 bytes, 838860800 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+```
+
 Create the mounting point
 
 ```
 sudo mkdir /mnt/virtualdisk
 
 sudo mount /dev/nbd0 /mnt/virtualdisk`
+```
+
+For example
+```
+$ ls -ld /mnt/virtualdisk/
+drwx------ 5 user user 4096 Feb 15 00:33 /mnt/virtualdisk/
 ```
 
 To unmount the virtual disk and remove ndb module from kernel
