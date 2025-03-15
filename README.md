@@ -3,12 +3,12 @@ Users have few option to move files from VM's disk to local PC, they can do scp 
 This definately useful if users want to copy the files without boot up the VM (e.g. in case of the boot disk failure).
 
 We will use qemu-nbd to mount the virtual disk. qemu-ndb supports a variety of virtual disk formats such as:
-QCOW2: QEMU's own format, which supports features like snapshots and compression.
-RAW: A simple uncompressed format.
-VMDK: VMware's format.
-VHD: Microsoft's format for Hyper-V.
-VHDX: An updated version of VHD with additional features.
-VDI: VirtualBox's format2.
+* QCOW2: QEMU's own format, which supports features like snapshots and compression.
+* RAW: A simple uncompressed format.
+* VMDK: VMware's format.
+* VHD: Microsoft's format for Hyper-V.
+* VHDX: An updated version of VHD with additional features.
+* VDI: VirtualBox's format2.
 
 Users can opt to mount remote virtualdisk using qemu-nbd, as long as the virtual disk can be read by qemu-nbd, for example with combination of sshfs or nfs to mount the virtual disks.
 
